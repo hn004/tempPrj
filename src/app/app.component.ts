@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { database } from './dataType';
+import { DbserviceService } from './dbservice.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,30 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'tempPrj';
+
+  constructor(private dbService:DbserviceService){
+
+  }
+
+
+title(title: any) {
+  throw new Error('Method not implemented.');
+}
+
+
+
+submit(data:database) {
+
+  console.log(data);
+
+  this.dbService.addDbValues(data).subscribe((result)=>{
+    if(result){
+      console.log("data Added Successfully");
+    }
+  })
+
+}
+
+
+
 }
